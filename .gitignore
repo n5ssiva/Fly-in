@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# uv / venv
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+*.swp

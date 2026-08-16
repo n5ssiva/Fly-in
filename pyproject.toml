@@ -1,0 +1,21 @@
+[project]
+name = "flyin"
+version = "1.6"
+description = "42 Fly-in - drone routing simulation"
+requires-python = ">=3.10"
+dependencies = [
+    "pygame",
+]
+
+[dependency-groups]
+dev = [
+    "flake8",
+    "mypy",
+    "pytest",
+]
+
+[tool.uv]
+package = false
+
+[tool.mypy]
+exclude = "(^\\.venv/|^venv/|^\\.git/|^__pycache__/|^\\.mypy_cache/|^\\.pytest_cache/)" 
