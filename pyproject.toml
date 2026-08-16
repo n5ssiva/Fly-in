@@ -4,6 +4,7 @@ version = "1.6"
 description = "42 Fly-in - drone routing simulation"
 requires-python = ">=3.10"
 dependencies = [
+    "pydantic>=2.13.4",
     "pygame",
 ]
 
@@ -18,4 +19,5 @@ dev = [
 package = false
 
 [tool.mypy]
+plugins = ["pydantic.mypy"]
 exclude = "(^\\.venv/|^venv/|^\\.git/|^__pycache__/|^\\.mypy_cache/|^\\.pytest_cache/)" 

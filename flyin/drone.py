@@ -6,14 +6,14 @@
 #    By: n5ssim <n5ssim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/16 21:30:05 by n5ssim            #+#    #+#              #
-#    Updated: 2026/08/16 21:30:42 by n5ssim           ###   ########.fr        #
+#    Updated: 2026/08/16 21:54:49 by n5ssim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 """Drone model: state of an individial drone during the simulation."""
 
-from dataclasses import dataclass
 from enum import Enum
+from pydantic import BaseModel
 
 
 class DroneStatus(Enum):
@@ -22,8 +22,7 @@ class DroneStatus(Enum):
     DELIVERED = "delivered"
 
 
-@dataclass
-class Drone:
+class Drone(BaseModel):
     drone_id: str
     current_zone: str | None
     status: DroneStatus = DroneStatus.WAITING

@@ -6,14 +6,15 @@
 #    By: n5ssim <n5ssim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/16 21:29:36 by n5ssim            #+#    #+#              #
-#    Updated: 2026/08/16 21:29:37 by n5ssim           ###   ########.fr        #
+#    Updated: 2026/08/16 21:53:01 by n5ssim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 """Zone model: the nodes of the drone routing network."""
 
-from dataclasses import dataclass, field
 from enum import Enum
+from pydantic import BaseModel, Field
+
 
 class ZoneType(Enum):
     NORMAL = "normal"
@@ -32,8 +33,7 @@ class ZoneType(Enum):
                 raise ValueError("blocked zones have no movement cost")
 
 
-@dataclass
-class Zone:
+class Zone(BaseModel):
     name: str
     x: int
     y: int
@@ -42,7 +42,7 @@ class Zone:
     max_drones: int = 1
     is_start: bool = False
     is_end: bool = False
-    current_occupants: set[str] = field(default_factory=set)
+    current_occupants: set[str] = Field(default_factory=set)
 
     def has_capacity(self) -> bool:
         """Check whether one more drone can enter this zone right now."""

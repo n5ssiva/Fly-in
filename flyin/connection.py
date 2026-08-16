@@ -6,21 +6,20 @@
 #    By: n5ssim <n5ssim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/16 21:29:24 by n5ssim            #+#    #+#              #
-#    Updated: 2026/08/16 21:30:32 by n5ssim           ###   ########.fr        #
+#    Updated: 2026/08/16 21:54:06 by n5ssim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 """Connection model: the edges of the drone routing network."""
 
-from dataclasses import dataclass, field
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class Connection:
+class Connection(BaseModel):
     zone_a: str
     zone_b: str
     max_link_capacity: int = 1
-    current_transits: set[str] = field(default_factory=set)
+    current_transits: set[str] = Field(default_factory=set)
 
     def other_side(self, zone_name: str) -> str:
         """Given one endpoint, return the zone name at the other end."""
