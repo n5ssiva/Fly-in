@@ -6,7 +6,7 @@
 #    By: n5ssim <n5ssim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/16 22:02:15 by n5ssim            #+#    #+#              #
-#    Updated: 2026/08/16 22:10:17 by n5ssim           ###   ########.fr        #
+#    Updated: 2026/08/16 22:18:46 by n5ssim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,20 @@ class Parser:
         ...
 
     def _parse_drone_count(self, line: str) -> int:
-        ...
+        """Parse the 'nb_drones: <n>' line"""
+        line = line.strip()
+        if not line.startswith("nb_drones:"):
+            raise ParseError(
+                f"line {self.line_number}: expected 'nb_drones: <n>', got {line!r}"
+            )
+
+        _, _, value = line.partition(":")
+        value = value.strip()
+        if not value.isdigit():
+            raise ParseError(
+                f"line {self.line_number}: nb_drones must be a positive integer, got {value!r}"
+            )
+        return int(value)
 
     def _parse_zone_line(self, line: str) -> Zone:
         ...
