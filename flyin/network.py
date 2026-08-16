@@ -6,7 +6,7 @@
 #    By: n5ssim <n5ssim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/16 21:30:52 by n5ssim            #+#    #+#              #
-#    Updated: 2026/08/16 21:31:19 by n5ssim           ###   ########.fr        #
+#    Updated: 2026/08/16 22:10:50 by n5ssim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ class Network:
         self.adjacency: dict[str, list[Connection]] = {}
         self.start_zone: str | None = None
         self.end_zone: str | None = None
+        self.nb_drones: int = 0
 
     def add_zone(self, zone: Zone) -> None:
         """Register a zone in the network."""
